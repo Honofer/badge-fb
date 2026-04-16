@@ -50,19 +50,19 @@ const BadgeCreator = () => {
       }
     }
   };
-  return <div className="flex flex-col items-center max-w-md w-full">
-    <div className="bg-white rounded-lg shadow-lg p-6 w-full mb-6">
+  return <div className="flex flex-col items-center w-full max-w-[500px]">
+    <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 w-full mb-6">
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="photo-upload">
           Téléversez votre photo
         </label>
         <div className="flex items-center justify-center w-full">
-          <label htmlFor="photo-upload" className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
-            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+          <label htmlFor="photo-upload" className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors">
+            <div className="flex flex-col items-center justify-center pt-5 pb-6 px-4 text-center">
               <UploadIcon className="w-8 h-8 mb-3 text-gray-500" />
               <p className="mb-2 text-sm text-gray-500">
                 <span className="font-semibold">Cliquez pour téléverser</span>{' '}
-                ou glissez-déposez
+                <span className="hidden sm:inline">ou glissez-déposez</span>
               </p>
               <p className="text-xs text-gray-500">PNG, JPG ou JPEG</p>
             </div>
@@ -71,16 +71,16 @@ const BadgeCreator = () => {
         </div>
       </div>
     </div>
-    <div className="mb-6">
-      <div ref={badgeRef} className="relative w-[500px] bg-transparent overflow-hidden">
-        <img src="/WhatsApp_Image_2025-07-15_a_08.32.42_d28d99a6.jpg" alt="Badge template" className="w-full h-auto object-contain" crossOrigin="anonymous" />
+    <div className="mb-6 w-full flex justify-center">
+      <div ref={badgeRef} className="relative w-full aspect-[1080/1350] bg-transparent overflow-hidden">
+        <img src="/WhatsApp_Image_2025-07-15_a_08.32.42_d28d99a6.jpg" alt="Badge template" className="w-full h-full object-contain" crossOrigin="anonymous" />
         <div className="absolute flex items-center justify-center overflow-hidden rounded-full"
           style={{
-  top: '41%',
-  left: '23%',
-  width: '51%',
-  height: '40%'
-}}>
+            top: '41%',
+            left: '23%',
+            width: '51%',
+            height: '40%'
+          }}>
           <img
             src={uploadedImage ?? ''}
             alt="Uploaded"
@@ -104,7 +104,7 @@ const BadgeCreator = () => {
         <ZoomInIcon className="w-5 h-5" />
       </button>
     </div>}
-    <button onClick={downloadBadge} disabled={!uploadedImage || isLoading} className={`flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white font-medium ${!uploadedImage || isLoading ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700'}`}>
+    <button onClick={downloadBadge} disabled={!uploadedImage || isLoading} className={`flex items-center justify-center gap-2 px-6 py-3 rounded-md text-white font-medium w-full sm:w-auto transition-all ${!uploadedImage || isLoading ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700 shadow-md active:scale-95'}`}>
       <DownloadIcon className="w-5 h-5" />
       {isLoading ? 'Génération en cours...' : 'Télécharger mon badge'}
     </button>
